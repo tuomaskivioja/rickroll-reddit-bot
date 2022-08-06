@@ -2,11 +2,11 @@ import praw
 from urllib.parse import quote_plus
 
 reddit = praw.Reddit(
-    client_id="yAawAXpkNmFdw7H-yHQoDw",
-    client_secret="DhuyrXlT3EvcXfmHEXHdB-fMgB9wDw",
-    user_agent="A bot that tries to Rick Roll you v1.0",
-    password="appleidishalloween",
-    username="rickrollmelodies",
+    client_id="YOUR_CLIENT_ID",
+    client_secret="YOUR_CLIENT_SECRET",
+    user_agent="DESCRIPTION",
+    password="YOUR_PASSWORD",
+    username="YOUR_USERNAME",
 )
 
 
@@ -24,10 +24,14 @@ def evaluate_post(submission):
 
 
 
-QUESTIONS = ["How to", "Where to"]
+QUESTIONS = ["How to", "Where to"] #add more here
 REPLY_TEMPLATE = "This should have what you're looking for: https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstley"
 
 
-subreddit = reddit.subreddit("learnpython")
+subreddit = reddit.subreddit("CHOOSE_SUBREDDIT_NAME")
+counter = 0
 for submission in subreddit.stream.submissions():
-    print(submission)
+    if evaluate_post(submission) == True:
+        counter += 1
+    if counter == 5:
+        break
